@@ -2,6 +2,7 @@ package CronExpression.descriptor;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -12,42 +13,42 @@ public abstract class AbstractDescriptionBuilder {
 
     protected final char[] SpecialCharsMinusStar = new char[]{'/', '-', ','};
 
-    public String getSegmentDescription(String expression) {
-        String description = "";
+    public List<Integer> getSegmentDescription(String expression) {
+        List descriptionList = new ArrayList();
         if (StringUtils.isEmpty(expression)) {
-            description = "";
+            descriptionList = new ArrayList();
         }
         else if ("*".equals(expression)) {
-            description = getAllDescription();
+            descriptionList = getAllDescription();
         }
         else if (!StringUtils.containsAny(expression, SpecialCharsMinusStar)) {
-            description = getSingleItemDescription(expression);
+            int singleItemData=Integer.parseInt(getSingleItemDescription(expression));
+            descriptionList.add(singleItemData);
         }
         else if (expression.contains("-")) {
             String[] segments = expression.split("-");
-            description = getBetweenDescription(expression, getSingleItemDescription(segments[0]), getSingleItemDescription(segments[1]));
+            descriptionList = getBetweenDescription(getSingleItemDescription(segments[0]), getSingleItemDescription(segments[1]));
         }
         else if (expression.contains(",")) {
             String[] segments = expression.split(",");
-            StringBuilder descriptionContent = new StringBuilder();
-            for (int i = 0; i < segments.length; i++) {
-                descriptionContent.append(getSingleItemDescription(segments[i]));
-                descriptionContent.append(" ");
+            for (String segment : segments) {
+                int singleItemData = Integer.parseInt(getSingleItemDescription(getSingleItemDescription(segment)));
+                descriptionList.add(singleItemData);
+
             }
-            description = descriptionContent.toString();
         }
         else if (expression.contains("/")) {
             String[] segments = expression.split("/");
-            description = getIntervalDescription(segments[1]);
+            descriptionList = getIntervalDescription(segments[1]);
         }
-        return description;
+        return descriptionList;
     }
 
-    protected abstract String getAllDescription();
+    protected abstract List getAllDescription();
 
-    protected abstract String getBetweenDescription(String expression, String initialLimit, String endLimit);
+    protected abstract List getBetweenDescription(String initialLimit, String endLimit);
 
-    protected abstract String getIntervalDescription(String expression);
+    protected abstract List getIntervalDescription(String expression);
 
     protected abstract String getSingleItemDescription(String expression);
 
@@ -56,17 +57,17 @@ public abstract class AbstractDescriptionBuilder {
     }
 
 
-    String getValuesWithFixedFrequency(int frequency,int start,int endIncluded) {
+    List getValuesWithFixedFrequency(int frequency,int start,int endIncluded) {
         List frequencyList= IntStream.iterate(start, i -> i <= endIncluded, i -> i + frequency)
                 .boxed()
                 .collect(toList());
 
-        return getStreamAsString(frequencyList);
+        return frequencyList;
     }
 
     abstract public String getHeaderDisplayString();
 
     public String getParsedDescriptionString(String expressionPart) {
-        return StringUtils.rightPad(getHeaderDisplayString(),15," " ) + getSegmentDescription(expressionPart);
+        return StringUtils.rightPad(getHeaderDisplayString(),15," " ) + getStreamAsString(getSegmentDescription(expressionPart));
     }
 }

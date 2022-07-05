@@ -6,7 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 
 public class CronExpDescriptor {
 
-     static String getFullDescription(String expression) {
+    static String getFullDescription(String expression) {
          String[] expressionParts;
          String description= "";
          try {
@@ -18,17 +18,12 @@ public class CronExpDescriptor {
                      getDayOfWeekDescription(expressionParts) + System.lineSeparator() +
                      getCommandDescription(expressionParts);
          }catch (Exception e){
-
+             description = e.getMessage();
+             System.out.println("Exception parsing expression ");
          }
-
-
 
         return description;
     }
-
-
-
-
     private static String getMinutesDescription(String[] expressionParts) {
         return new MinutesDescriptionBuilder().getParsedDescriptionString(expressionParts[0]);
     }

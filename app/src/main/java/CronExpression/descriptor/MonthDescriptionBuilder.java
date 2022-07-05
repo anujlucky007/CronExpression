@@ -1,8 +1,6 @@
 package CronExpression.descriptor;
 
 
-import org.apache.commons.lang3.StringUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -12,27 +10,27 @@ public class MonthDescriptionBuilder extends AbstractDescriptionBuilder {
     private String headerDisplayString ="Month";
 
     @Override
-    protected String getAllDescription() {
+    protected List getAllDescription() {
         List fullMonthDescription= new ArrayList();
         IntStream.rangeClosed(1, 12).forEach(
                 val -> fullMonthDescription.add(val)
         );
-        return getStreamAsString(fullMonthDescription);
+        return fullMonthDescription;
     }
 
     @Override
-    protected String getBetweenDescription(String expression, String initialLimit, String endLimit) {
+    protected List getBetweenDescription(String initialLimit, String endLimit) {
         List betweenMonthDescription= new ArrayList();
         int startLimit= Integer.parseInt(initialLimit);
         int endList= Integer.parseInt(endLimit);
         IntStream.rangeClosed(startLimit, endList).forEach(
                 val -> betweenMonthDescription.add(val)
         );
-        return getStreamAsString(betweenMonthDescription);
+        return betweenMonthDescription;
     }
 
     @Override
-    protected String getIntervalDescription(String expression) {
+    protected List getIntervalDescription(String expression) {
         int frequency= Integer.parseInt(expression);
         return getValuesWithFixedFrequency(frequency,1,12);
     }

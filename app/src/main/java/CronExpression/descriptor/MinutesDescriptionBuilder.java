@@ -1,8 +1,6 @@
 package CronExpression.descriptor;
 
 
-import org.apache.commons.lang3.StringUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -13,27 +11,27 @@ public class MinutesDescriptionBuilder extends AbstractDescriptionBuilder {
     private String headerDisplayString ="Minutes";
 
     @Override
-    protected String getAllDescription() {
+    protected List getAllDescription() {
         List fullMinuteDescription= new ArrayList();
         IntStream.range(0, 60).forEach(
                 val -> fullMinuteDescription.add(val)
         );
-        return getStreamAsString(fullMinuteDescription);
+        return fullMinuteDescription;
     }
 
     @Override
-    protected String getBetweenDescription(String expression, String initialLimit, String endLimit) {
+    protected List getBetweenDescription(String initialLimit, String endLimit) {
         List betweenMinuteDescription= new ArrayList();
         int startLimit= Integer.parseInt(initialLimit);
         int endList= Integer.parseInt(endLimit);
         IntStream.rangeClosed(startLimit, endList).forEach(
                 val -> betweenMinuteDescription.add(val)
         );
-        return getStreamAsString(betweenMinuteDescription);
+        return betweenMinuteDescription;
     }
 
     @Override
-    protected String getIntervalDescription(String expression) {
+    protected List getIntervalDescription(String expression) {
         int frequency= Integer.parseInt(expression);
         return getValuesWithFixedFrequency(frequency,0,59);
     }

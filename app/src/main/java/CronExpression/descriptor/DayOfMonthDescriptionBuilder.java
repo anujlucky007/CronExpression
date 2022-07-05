@@ -9,27 +9,27 @@ public class DayOfMonthDescriptionBuilder extends AbstractDescriptionBuilder {
 
     String headerDisplayString ="Day of month";
     @Override
-    protected String getAllDescription() {
+    protected List getAllDescription() {
         List fullDayOfMonthDescription= new ArrayList();
         IntStream.rangeClosed(1, 31).forEach(
                 val -> fullDayOfMonthDescription.add(val)
         );
-        return getStreamAsString(fullDayOfMonthDescription);
+        return fullDayOfMonthDescription;
     }
 
     @Override
-    protected String getBetweenDescription(String expression, String initialLimit, String endLimit) {
+    protected List getBetweenDescription(String initialLimit, String endLimit) {
         List betweenDOMDescription= new ArrayList();
         int startLimit= Integer.parseInt(initialLimit);
         int endList= Integer.parseInt(endLimit);
         IntStream.rangeClosed(startLimit, endList).forEach(
                 val -> betweenDOMDescription.add(val)
         );
-        return getStreamAsString(betweenDOMDescription);
+        return betweenDOMDescription;
     }
 
     @Override
-    protected String getIntervalDescription(String expression) {
+    protected List getIntervalDescription(String expression) {
         int frequency= Integer.parseInt(expression);
         return getValuesWithFixedFrequency(frequency,1,31);
     }
