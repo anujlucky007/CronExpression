@@ -19,7 +19,7 @@ public abstract class AbstractDescriptionBuilder {
             descriptionList = new ArrayList();
         }
         else if ("*".equals(expression)) {
-            descriptionList = getAllDescription();
+            descriptionList = getSTARDescription();
         }
         else if (!StringUtils.containsAny(expression, SpecialCharsMinusStar)) {
             int singleItemData=Integer.parseInt(getSingleItemDescription(expression));
@@ -44,7 +44,7 @@ public abstract class AbstractDescriptionBuilder {
         return descriptionList;
     }
 
-    protected abstract List getAllDescription();
+    protected abstract List getSTARDescription();
 
     protected abstract List getBetweenDescription(String initialLimit, String endLimit);
 

@@ -9,7 +9,7 @@ public class DayOfMonthDescriptionBuilder extends AbstractDescriptionBuilder {
 
     String headerDisplayString ="Day of month";
     @Override
-    protected List getAllDescription() {
+    protected List getSTARDescription() {
         List fullDayOfMonthDescription= new ArrayList();
         IntStream.rangeClosed(1, 31).forEach(
                 val -> fullDayOfMonthDescription.add(val)

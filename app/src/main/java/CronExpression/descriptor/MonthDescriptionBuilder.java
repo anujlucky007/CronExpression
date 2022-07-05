@@ -10,7 +10,7 @@ public class MonthDescriptionBuilder extends AbstractDescriptionBuilder {
     private String headerDisplayString ="Month";
 
     @Override
-    protected List getAllDescription() {
+    protected List getSTARDescription() {
         List fullMonthDescription= new ArrayList();
         IntStream.rangeClosed(1, 12).forEach(
                 val -> fullMonthDescription.add(val)

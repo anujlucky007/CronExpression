@@ -9,7 +9,7 @@ public class DayOfWeekDescriptionBuilder extends AbstractDescriptionBuilder {
 
     String headerDisplayString ="Day of week";
     @Override
-    protected List getAllDescription() {
+    protected List getSTARDescription() {
         List dayOfWeekList= new ArrayList();
         IntStream.rangeClosed(0, 6).forEach(
                 val -> dayOfWeekList.add(val)

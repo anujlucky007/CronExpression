@@ -11,7 +11,7 @@ public class MinutesDescriptionBuilder extends AbstractDescriptionBuilder {
     private String headerDisplayString ="Minutes";
 
     @Override
-    protected List getAllDescription() {
+    protected List getSTARDescription() {
         List fullMinuteDescription= new ArrayList();
         IntStream.range(0, 60).forEach(
                 val -> fullMinuteDescription.add(val)

@@ -11,7 +11,7 @@ class DayOfWeekDescriptionBuilderTest {
     @Test
     public void shouldGiveFullDescription(){
         DayOfWeekDescriptionBuilder dayOfWeekDescriptionBuilder = new DayOfWeekDescriptionBuilder();
-        List actualMessage = dayOfWeekDescriptionBuilder.getAllDescription();
+        List actualMessage = dayOfWeekDescriptionBuilder.getSTARDescription();
         String expectedMessage="0 1 2 3 4 5 6";
         assertEquals(getStreamAsString(actualMessage),expectedMessage);
     }

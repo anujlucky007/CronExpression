@@ -11,7 +11,7 @@ public class HoursDescriptionBuilder extends AbstractDescriptionBuilder {
     private String headerDisplayString ="Hour";
 
     @Override
-    protected List getAllDescription() {
+    protected List getSTARDescription() {
         List fullHourDescription= new ArrayList();
         IntStream.range(0, 24).forEach(
                 val -> fullHourDescription.add(val)
