@@ -41,4 +41,20 @@ class DayOfMonthDescriptionBuilderTest {
         String expectedMessage="Day Of month cannot be less than 0 or greater than 31";
         assertEquals(actualMessage,expectedMessage);
     }
+
+    @Test
+    public void shouldGiveValueWithFixedFrequencyOf2Day(){
+        DayOfMonthDescriptionBuilder dayOfMonthDescriptionBuilder = new DayOfMonthDescriptionBuilder();
+        String actualMessage = dayOfMonthDescriptionBuilder.getIntervalDescription("2");
+        String expectedMessage="1 3 5 7 9 11 13 15 17 19 21 23 25 27 29 31";
+        assertEquals(actualMessage,expectedMessage);
+    }
+
+    @Test
+    public void shouldGiveValueWithFixedFrequencyOf15Day(){
+        DayOfMonthDescriptionBuilder dayOfMonthDescriptionBuilder = new DayOfMonthDescriptionBuilder();
+        String actualMessage = dayOfMonthDescriptionBuilder.getIntervalDescription("15");
+        String expectedMessage="1 16 31";
+        assertEquals(actualMessage,expectedMessage);
+    }
 }

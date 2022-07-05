@@ -4,6 +4,9 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+import static java.util.stream.Collectors.toList;
 
 public abstract class AbstractDescriptionBuilder {
 
@@ -45,6 +48,15 @@ public abstract class AbstractDescriptionBuilder {
 
     public String getStreamAsString(List listData){
       return  listData.stream().map(Object::toString).collect(Collectors.joining(" ")).toString();
+    }
+
+
+    String getValuesWithFixedFrequency(int frequency,int start,int endIncluded) {
+        List frequencyList= IntStream.iterate(start, i -> i <= endIncluded, i -> i + frequency)
+                .boxed()
+                .collect(toList());
+
+        return getStreamAsString(frequencyList);
     }
 
 }

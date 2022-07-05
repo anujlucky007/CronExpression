@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import static java.util.stream.Collectors.toList;
+
 
 public class HoursDescriptionBuilder extends AbstractDescriptionBuilder {
 
@@ -32,7 +34,8 @@ public class HoursDescriptionBuilder extends AbstractDescriptionBuilder {
 
     @Override
     protected String getIntervalDescription(String expression) {
-        return null;
+        int frequency= Integer.parseInt(expression);
+        return getValuesWithFixedFrequency(frequency,0,23);
     }
 
     @Override

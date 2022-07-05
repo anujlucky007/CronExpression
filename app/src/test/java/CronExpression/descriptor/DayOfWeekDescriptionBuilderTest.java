@@ -55,4 +55,20 @@ class DayOfWeekDescriptionBuilderTest {
         assertEquals(actualMessage,expectedMessage);
     }
 
+
+    @Test
+    public void shouldGiveValueWithFixedFrequencyOf2DayOfWeek(){
+        DayOfWeekDescriptionBuilder dayOfWeekDescriptionBuilder = new DayOfWeekDescriptionBuilder();
+        String actualMessage = dayOfWeekDescriptionBuilder.getIntervalDescription("2");
+        String expectedMessage="0 2 4 6";
+        assertEquals(actualMessage,expectedMessage);
+    }
+
+    @Test
+    public void shouldGiveValueWithFixedFrequencyOf5DayOfWeek(){
+        DayOfWeekDescriptionBuilder dayOfWeekDescriptionBuilder = new DayOfWeekDescriptionBuilder();
+        String actualMessage = dayOfWeekDescriptionBuilder.getIntervalDescription("5");
+        String expectedMessage="0 5";
+        assertEquals(actualMessage,expectedMessage);
+    }
 }

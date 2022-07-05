@@ -32,7 +32,8 @@ public class DayOfMonthDescriptionBuilder extends AbstractDescriptionBuilder {
 
     @Override
     protected String getIntervalDescription(String expression) {
-        return null;
+        int frequency= Integer.parseInt(expression);
+        return getValuesWithFixedFrequency(frequency,1,31);
     }
 
     @Override

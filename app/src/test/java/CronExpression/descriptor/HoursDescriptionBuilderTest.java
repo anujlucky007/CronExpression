@@ -43,4 +43,20 @@ class HoursDescriptionBuilderTest {
         String expectedMessage="Value 25 for hourOfDay must be in the range [0,23]";
         assertEquals(actualMessage,expectedMessage);
     }
+
+    @Test
+    public void shouldGiveValueWithFixedFrequencyOf2Hour(){
+        HoursDescriptionBuilder hoursDescriptionBuilder = new HoursDescriptionBuilder();
+        String actualMessage = hoursDescriptionBuilder.getIntervalDescription("2");
+        String expectedMessage="0 2 4 6 8 10 12 14 16 18 20 22";
+        assertEquals(actualMessage,expectedMessage);
+    }
+
+    @Test
+    public void shouldGiveValueWithFixedFrequencyOf5Hour(){
+        HoursDescriptionBuilder hoursDescriptionBuilder = new HoursDescriptionBuilder();
+        String actualMessage = hoursDescriptionBuilder.getIntervalDescription("5");
+        String expectedMessage="0 5 10 15 20";
+        assertEquals(actualMessage,expectedMessage);
+    }
 }

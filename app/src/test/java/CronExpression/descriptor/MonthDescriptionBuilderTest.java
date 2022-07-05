@@ -54,4 +54,21 @@ class MonthDescriptionBuilderTest {
         String expectedMessage="Month expression cannot be less than 0 or greater than 12";
         assertEquals(actualMessage,expectedMessage);
     }
+
+
+    @Test
+    public void shouldGiveValueWithFixedFrequencyOf2Month(){
+        MonthDescriptionBuilder monthDescriptionBuilder = new MonthDescriptionBuilder();
+        String actualMessage = monthDescriptionBuilder.getIntervalDescription("2");
+        String expectedMessage="1 3 5 7 9 11";
+        assertEquals(actualMessage,expectedMessage);
+    }
+
+    @Test
+    public void shouldGiveValueWithFixedFrequencyOf6Min(){
+        MonthDescriptionBuilder monthDescriptionBuilder = new MonthDescriptionBuilder();
+        String actualMessage = monthDescriptionBuilder.getIntervalDescription("11");
+        String expectedMessage="1 12";
+        assertEquals(actualMessage,expectedMessage);
+    }
 }
