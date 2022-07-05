@@ -3,9 +3,12 @@
  */
 package CronExpression;
 
+import org.checkerframework.checker.units.qual.C;
+
 public class App {
 
     public static void main(String[] args) {
-        System.out.println(CronExpDescriptor.getFullDescription(args[0]));
+        CronExpDescriptor cronExpDescriptor= new CronExpDescriptor();
+        System.out.println(cronExpDescriptor.getFullDescription(args[0]));
     }
 }
