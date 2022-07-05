@@ -66,7 +66,7 @@ class MinutesDescriptionBuilderTest {
     public void shouldGetSingleHourExpressionIntoDescription(){
         MinutesDescriptionBuilder minutesDescriptionBuilder = new MinutesDescriptionBuilder();
         String actualMessage= minutesDescriptionBuilder.getSegmentDescription("5");
-        String expectedMessage="05";
+        String expectedMessage="5";
         assertEquals(actualMessage,expectedMessage);
     }
 
@@ -74,7 +74,7 @@ class MinutesDescriptionBuilderTest {
     public void shouldGetCommaSeparatedHourExpressionIntoDescription(){
         MinutesDescriptionBuilder minutesDescriptionBuilder = new MinutesDescriptionBuilder();
         String actualMessage= minutesDescriptionBuilder.getSegmentDescription("1,2,5");
-        String expectedMessage="01 02 05 ";
+        String expectedMessage="1 2 5 ";
         assertEquals(actualMessage,expectedMessage);
     }
 

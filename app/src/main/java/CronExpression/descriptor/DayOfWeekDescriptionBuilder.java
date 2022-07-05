@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 
 public class DayOfWeekDescriptionBuilder extends AbstractDescriptionBuilder {
 
-
+    String headerDisplayString ="Day of week";
     @Override
     protected String getAllDescription() {
         List dayOfWeekList= new ArrayList();
@@ -40,10 +40,15 @@ public class DayOfWeekDescriptionBuilder extends AbstractDescriptionBuilder {
     protected String getSingleItemDescription(String expression) {
         int dayOfWeek= Integer.parseInt(expression);
         if(dayOfWeek>=0 && dayOfWeek<=6)
-            return StringUtils.leftPad(expression, 2, '0');
+            return expression;
         else
             throw new IllegalArgumentException("Day Of week expression cannot be less than 0 or greater than 6");
 
 
+    }
+
+    @Override
+    public String getHeaderDisplayString() {
+        return headerDisplayString;
     }
 }

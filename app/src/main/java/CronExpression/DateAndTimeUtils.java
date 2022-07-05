@@ -26,7 +26,7 @@ public final class DateAndTimeUtils {
             } else {
                 localTime = new LocalTime(hour, minutes);
             }
-        return  StringUtils.leftPad(""+localTime.getHourOfDay(), 2, '0');
+        return  ""+localTime.getHourOfDay();
     }
 
     public static String getDayOfWeekName(int dayOfWeek) {

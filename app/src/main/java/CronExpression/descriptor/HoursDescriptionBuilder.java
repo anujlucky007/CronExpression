@@ -10,6 +10,8 @@ import java.util.stream.IntStream;
 public class HoursDescriptionBuilder extends AbstractDescriptionBuilder {
 
 
+    private String headerDisplayString ="Hour";
+
     @Override
     protected String getAllDescription() {
         List fullHourDescription= new ArrayList();
@@ -39,6 +41,10 @@ public class HoursDescriptionBuilder extends AbstractDescriptionBuilder {
     @Override
     protected String getSingleItemDescription(String expression) {
         return DateAndTimeUtils.formatTime(expression, "0");
+    }
+    @Override
+    public String getHeaderDisplayString() {
+        return headerDisplayString;
     }
 
 }

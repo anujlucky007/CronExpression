@@ -16,14 +16,18 @@ public abstract class AbstractDescriptionBuilder {
         String description = "";
         if (StringUtils.isEmpty(expression)) {
             description = "";
-        } else if ("*".equals(expression)) {
+        }
+        else if ("*".equals(expression)) {
             description = getAllDescription();
-        } else if (!StringUtils.containsAny(expression, SpecialCharsMinusStar)) {
+        }
+        else if (!StringUtils.containsAny(expression, SpecialCharsMinusStar)) {
             description = getSingleItemDescription(expression);
-        } else if (expression.contains("-")) {
+        }
+        else if (expression.contains("-")) {
             String[] segments = expression.split("-");
             description = getBetweenDescription(expression, getSingleItemDescription(segments[0]), getSingleItemDescription(segments[1]));
-        } else if (expression.contains(",")) {
+        }
+        else if (expression.contains(",")) {
             String[] segments = expression.split(",");
             StringBuilder descriptionContent = new StringBuilder();
             for (int i = 0; i < segments.length; i++) {
@@ -31,7 +35,8 @@ public abstract class AbstractDescriptionBuilder {
                 descriptionContent.append(" ");
             }
             description = descriptionContent.toString();
-        } else if (expression.contains("/")) {
+        }
+        else if (expression.contains("/")) {
             String[] segments = expression.split("/");
             description = getIntervalDescription(segments[1]);
         }
@@ -59,4 +64,9 @@ public abstract class AbstractDescriptionBuilder {
         return getStreamAsString(frequencyList);
     }
 
+    abstract public String getHeaderDisplayString();
+
+    public String getParsedDescriptionString(String expressionPart) {
+        return StringUtils.rightPad(getHeaderDisplayString(),15," " ) + getSegmentDescription(expressionPart);
+    }
 }

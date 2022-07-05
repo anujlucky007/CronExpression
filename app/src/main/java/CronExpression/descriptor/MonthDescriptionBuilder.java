@@ -9,6 +9,8 @@ import java.util.stream.IntStream;
 
 public class MonthDescriptionBuilder extends AbstractDescriptionBuilder {
 
+    private String headerDisplayString ="Month";
+
     @Override
     protected String getAllDescription() {
         List fullMonthDescription= new ArrayList();
@@ -39,8 +41,13 @@ public class MonthDescriptionBuilder extends AbstractDescriptionBuilder {
     protected String getSingleItemDescription(String expression) {
         int month= Integer.parseInt(expression);
         if(month>0 && month<=12)
-            return StringUtils.leftPad(expression, 2, '0');
+            return expression;
         else
             throw new IllegalArgumentException("Month expression cannot be less than 1 or greater than 12");
+    }
+
+    @Override
+    public String getHeaderDisplayString() {
+        return headerDisplayString;
     }
 }

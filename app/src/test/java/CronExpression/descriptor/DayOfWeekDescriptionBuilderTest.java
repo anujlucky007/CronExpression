@@ -23,7 +23,7 @@ class DayOfWeekDescriptionBuilderTest {
     public void shouldGiveDayOfWeekBasedOnExpressionPassed(){
         DayOfWeekDescriptionBuilder dayOfWeekDescriptionBuilder = new DayOfWeekDescriptionBuilder();
         String actualMessage = dayOfWeekDescriptionBuilder.getSingleItemDescription("5");
-        String expectedMessage="05";
+        String expectedMessage="5";
         assertEquals(actualMessage,expectedMessage);
     }
     @Test
@@ -85,7 +85,7 @@ class DayOfWeekDescriptionBuilderTest {
     public void shouldGetSingleDaYOfWeekExpressionIntoDescription(){
         DayOfWeekDescriptionBuilder dayOfWeekDescriptionBuilder = new DayOfWeekDescriptionBuilder();
         String actualMessage= dayOfWeekDescriptionBuilder.getSegmentDescription("5");
-        String expectedMessage="05";
+        String expectedMessage="5";
         assertEquals(actualMessage,expectedMessage);
     }
 
@@ -93,7 +93,7 @@ class DayOfWeekDescriptionBuilderTest {
     public void shouldGetCommaSeparatedWeekExpressionIntoDescription(){
         DayOfWeekDescriptionBuilder dayOfWeekDescriptionBuilder = new DayOfWeekDescriptionBuilder();
         String actualMessage= dayOfWeekDescriptionBuilder.getSegmentDescription("1,2,5");
-        String expectedMessage="01 02 05 ";
+        String expectedMessage="1 2 5 ";
         assertEquals(actualMessage,expectedMessage);
     }
 

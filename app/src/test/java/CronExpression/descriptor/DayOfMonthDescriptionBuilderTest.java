@@ -24,7 +24,7 @@ class DayOfMonthDescriptionBuilderTest {
     public void shouldGiveDOMBasedOnExpressionPassed(){
         DayOfMonthDescriptionBuilder dayOfMonthDescriptionBuilder = new DayOfMonthDescriptionBuilder();
         String actualMessage = dayOfMonthDescriptionBuilder.getSingleItemDescription("5");
-        String expectedMessage="05";
+        String expectedMessage="5";
         assertEquals(actualMessage,expectedMessage);
     }
 

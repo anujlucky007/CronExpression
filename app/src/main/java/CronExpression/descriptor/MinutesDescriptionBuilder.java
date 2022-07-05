@@ -10,6 +10,8 @@ import java.util.stream.IntStream;
 public class MinutesDescriptionBuilder extends AbstractDescriptionBuilder {
 
 
+    private String headerDisplayString ="Minutes";
+
     @Override
     protected String getAllDescription() {
         List fullMinuteDescription= new ArrayList();
@@ -40,10 +42,13 @@ public class MinutesDescriptionBuilder extends AbstractDescriptionBuilder {
     protected String getSingleItemDescription(String expression) {
         int month= Integer.parseInt(expression);
         if(month>=0 && month<60)
-            return StringUtils.leftPad(expression, 2, '0');
+            return expression;
         else
             throw new IllegalArgumentException("Minutes expression cannot be less than 0 or greater than 59");
     }
 
-
+    @Override
+    public String getHeaderDisplayString() {
+        return headerDisplayString;
+    }
 }

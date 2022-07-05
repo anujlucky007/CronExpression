@@ -24,7 +24,7 @@ class MonthDescriptionBuilderTest {
     public void shouldGiveMonthBasedOnExpressionPassed(){
         MonthDescriptionBuilder monthDescriptionBuilder = new MonthDescriptionBuilder();
         String actualMessage = monthDescriptionBuilder.getSingleItemDescription("5");
-        String expectedMessage="05";
+        String expectedMessage="5";
         assertEquals(actualMessage,expectedMessage);
     }
 
@@ -92,7 +92,7 @@ class MonthDescriptionBuilderTest {
     public void shouldGetSingleHourExpressionIntoDescription(){
         MonthDescriptionBuilder monthDescriptionBuilder = new MonthDescriptionBuilder();
         String actualMessage= monthDescriptionBuilder.getSegmentDescription("5");
-        String expectedMessage="05";
+        String expectedMessage="5";
         assertEquals(actualMessage,expectedMessage);
     }
 
@@ -100,7 +100,7 @@ class MonthDescriptionBuilderTest {
     public void shouldGetCommaSeparatedMonthExpressionIntoDescription(){
         MonthDescriptionBuilder monthDescriptionBuilder = new MonthDescriptionBuilder();
         String actualMessage= monthDescriptionBuilder.getSegmentDescription("1,2,5");
-        String expectedMessage="01 02 05 ";
+        String expectedMessage="1 2 5 ";
         assertEquals(actualMessage,expectedMessage);
     }
 
