@@ -1,4 +1,4 @@
-package CronExpression.descriptor;
+package cronExpression.descriptor;
 
 import org.junit.jupiter.api.Test;
 

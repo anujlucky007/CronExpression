@@ -1,53 +1,52 @@
-package CronExpression.descriptor;
+package cronExpression.descriptor;
+
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
+public class DayOfWeekDescriptionBuilder extends AbstractDescriptionBuilder {
 
-public class HoursDescriptionBuilder extends AbstractDescriptionBuilder {
-
-
-    private String headerDisplayString ="Hour";
-
+    String headerDisplayString ="Day of week";
     @Override
     protected List getSTARDescription() {
-        List fullHourDescription= new ArrayList();
-        IntStream.range(0, 24).forEach(
-                val -> fullHourDescription.add(val)
+        List dayOfWeekList= new ArrayList();
+        IntStream.rangeClosed(0, 6).forEach(
+                val -> dayOfWeekList.add(val)
         );
-        return fullHourDescription;
+        return dayOfWeekList;
     }
 
     @Override
     protected List getBetweenDescription(String initialLimit, String endLimit) {
-        List betweenHourDescription= new ArrayList();
+        List betweenDOWDescription= new ArrayList();
         int startLimit= Integer.parseInt(initialLimit);
         int endList= Integer.parseInt(endLimit);
         IntStream.rangeClosed(startLimit, endList).forEach(
-                val -> betweenHourDescription.add(val)
+                val -> betweenDOWDescription.add(val)
         );
-        return betweenHourDescription;
+        return betweenDOWDescription;
     }
 
     @Override
     protected List getIntervalDescription(String expression) {
         int frequency= Integer.parseInt(expression);
-        return getValuesWithFixedFrequency(frequency,0,23);
+        return getValuesWithFixedFrequency(frequency,0,6);
     }
 
     @Override
     protected String getSingleItemDescription(String expression) {
-        int hour= Integer.parseInt(expression);
-        if(hour>=0 && hour<24)
+        int dayOfWeek= Integer.parseInt(expression);
+        if(dayOfWeek>=0 && dayOfWeek<=6)
             return expression;
         else
-            throw new IllegalArgumentException("Hour expression cannot be less than 0 or greater than 23");
+            throw new IllegalArgumentException("Day Of week expression cannot be less than 0 or greater than 6");
+
 
     }
+
     @Override
     public String getHeaderDisplayString() {
         return headerDisplayString;
     }
-
 }

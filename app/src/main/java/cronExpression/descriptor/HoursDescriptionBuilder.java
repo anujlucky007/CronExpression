@@ -1,52 +1,53 @@
-package CronExpression.descriptor;
-
+package cronExpression.descriptor;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class MinutesDescriptionBuilder extends AbstractDescriptionBuilder {
+
+public class HoursDescriptionBuilder extends AbstractDescriptionBuilder {
 
 
-    private String headerDisplayString ="Minutes";
+    private String headerDisplayString ="Hour";
 
     @Override
     protected List getSTARDescription() {
-        List fullMinuteDescription= new ArrayList();
-        IntStream.range(0, 60).forEach(
-                val -> fullMinuteDescription.add(val)
+        List fullHourDescription= new ArrayList();
+        IntStream.range(0, 24).forEach(
+                val -> fullHourDescription.add(val)
         );
-        return fullMinuteDescription;
+        return fullHourDescription;
     }
 
     @Override
     protected List getBetweenDescription(String initialLimit, String endLimit) {
-        List betweenMinuteDescription= new ArrayList();
+        List betweenHourDescription= new ArrayList();
         int startLimit= Integer.parseInt(initialLimit);
         int endList= Integer.parseInt(endLimit);
         IntStream.rangeClosed(startLimit, endList).forEach(
-                val -> betweenMinuteDescription.add(val)
+                val -> betweenHourDescription.add(val)
         );
-        return betweenMinuteDescription;
+        return betweenHourDescription;
     }
 
     @Override
     protected List getIntervalDescription(String expression) {
         int frequency= Integer.parseInt(expression);
-        return getValuesWithFixedFrequency(frequency,0,59);
+        return getValuesWithFixedFrequency(frequency,0,23);
     }
 
     @Override
     protected String getSingleItemDescription(String expression) {
-        int month= Integer.parseInt(expression);
-        if(month>=0 && month<60)
+        int hour= Integer.parseInt(expression);
+        if(hour>=0 && hour<24)
             return expression;
         else
-            throw new IllegalArgumentException("Minutes expression cannot be less than 0 or greater than 59");
-    }
+            throw new IllegalArgumentException("Hour expression cannot be less than 0 or greater than 23");
 
+    }
     @Override
     public String getHeaderDisplayString() {
         return headerDisplayString;
     }
+
 }

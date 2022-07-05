@@ -1,4 +1,4 @@
-package CronExpression;
+package cronExpression;
 
 import java.text.ParseException;
 import org.apache.commons.lang3.StringUtils;

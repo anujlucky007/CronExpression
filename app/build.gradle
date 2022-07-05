@@ -28,7 +28,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'CronExpression.App'
+    mainClass = 'cronExpression.App'
 }
 
 tasks.named('test') {

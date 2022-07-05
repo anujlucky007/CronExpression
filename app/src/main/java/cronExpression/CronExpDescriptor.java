@@ -1,7 +1,7 @@
-package CronExpression;
+package cronExpression;
 
 
-import CronExpression.descriptor.*;
+import cronExpression.descriptor.*;
 import org.apache.commons.lang3.StringUtils;
 
 public class CronExpDescriptor {

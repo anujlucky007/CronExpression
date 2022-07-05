@@ -1,4 +1,4 @@
-package CronExpression.descriptor;
+package cronExpression.descriptor;
 
 import org.apache.commons.lang3.StringUtils;
 
