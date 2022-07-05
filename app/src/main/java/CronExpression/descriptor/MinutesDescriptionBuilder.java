@@ -1,14 +1,11 @@
 package CronExpression.descriptor;
 
 
-import CronExpression.DateAndTimeUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
-
-import static java.util.stream.Collectors.toList;
-
 
 public class MinutesDescriptionBuilder extends AbstractDescriptionBuilder {
 
@@ -41,7 +38,11 @@ public class MinutesDescriptionBuilder extends AbstractDescriptionBuilder {
 
     @Override
     protected String getSingleItemDescription(String expression) {
-        return DateAndTimeUtils.formatMinutes(expression);
+        int month= Integer.parseInt(expression);
+        if(month>=0 && month<60)
+            return StringUtils.leftPad(expression, 2, '0');
+        else
+            throw new IllegalArgumentException("Minutes expression cannot be less than 0 or greater than 59");
     }
 
 

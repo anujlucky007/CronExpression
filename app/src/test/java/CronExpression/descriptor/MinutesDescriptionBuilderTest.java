@@ -37,4 +37,64 @@ class MinutesDescriptionBuilderTest {
         String expectedMessage="0 15 30 45";
         assertEquals(actualMessage,expectedMessage);
     }
+
+    @Test
+    public void shouldGiveValueWithFixedFrequencyOf5min(){
+        MinutesDescriptionBuilder minutesDescriptionBuilder = new MinutesDescriptionBuilder();;
+        String actualMessage = minutesDescriptionBuilder.getIntervalDescription("5");
+        String expectedMessage="0 5 10 15 20 25 30 35 40 45 50 55";
+        assertEquals(actualMessage,expectedMessage);
+    }
+
+    @Test
+    public void shouldGetExpressionSTARIntoDescription(){
+        MinutesDescriptionBuilder minutesDescriptionBuilder = new MinutesDescriptionBuilder();
+        String actualMessage= minutesDescriptionBuilder.getSegmentDescription("*");
+        String expectedMessage="0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59";
+        assertEquals(actualMessage,expectedMessage);
+    }
+
+    @Test
+    public void shouldGetExpressionIntervalIntoDescription(){
+        MinutesDescriptionBuilder minutesDescriptionBuilder = new MinutesDescriptionBuilder();
+        String actualMessage= minutesDescriptionBuilder.getSegmentDescription("5-6");
+        String expectedMessage="5 6";
+        assertEquals(actualMessage,expectedMessage);
+    }
+
+    @Test
+    public void shouldGetSingleHourExpressionIntoDescription(){
+        MinutesDescriptionBuilder minutesDescriptionBuilder = new MinutesDescriptionBuilder();
+        String actualMessage= minutesDescriptionBuilder.getSegmentDescription("5");
+        String expectedMessage="05";
+        assertEquals(actualMessage,expectedMessage);
+    }
+
+    @Test
+    public void shouldGetCommaSeparatedHourExpressionIntoDescription(){
+        MinutesDescriptionBuilder minutesDescriptionBuilder = new MinutesDescriptionBuilder();
+        String actualMessage= minutesDescriptionBuilder.getSegmentDescription("1,2,5");
+        String expectedMessage="01 02 05 ";
+        assertEquals(actualMessage,expectedMessage);
+    }
+
+    @Test
+    public void shouldGetSlashSeparatedWeekExpressionIntoDescription(){
+        MinutesDescriptionBuilder minutesDescriptionBuilder = new MinutesDescriptionBuilder();
+        String actualMessage= minutesDescriptionBuilder.getSegmentDescription("*/15");
+        String expectedMessage="0 15 30 45";
+        assertEquals(actualMessage,expectedMessage);
+    }
+
+    @Test
+    public void shouldReturnErrorIfWrongExpressionIsEntered(){
+        MinutesDescriptionBuilder minutesDescriptionBuilder = new MinutesDescriptionBuilder();
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->
+        {
+            minutesDescriptionBuilder.getSegmentDescription("99");
+        });
+        String actualMessage = exception.getMessage();
+        String expectedMessage="Minutes expression cannot be less than 0 or greater than 59";
+        assertEquals(actualMessage,expectedMessage);
+    }
 }

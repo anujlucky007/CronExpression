@@ -3,8 +3,6 @@ package CronExpression;
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
 import org.joda.time.LocalTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 
 public final class DateAndTimeUtils {
 
@@ -33,19 +31,6 @@ public final class DateAndTimeUtils {
 
     public static String getDayOfWeekName(int dayOfWeek) {
         return new DateTime().withDayOfWeek(dayOfWeek).dayOfWeek().getAsText();
-    }
-
-
-    public static String formatMinutes(String minutesExpression) {
-        if (StringUtils.contains(minutesExpression, ",")) {
-            StringBuilder formattedExpression = new StringBuilder();
-            for (String minute : StringUtils.split(minutesExpression, ',')) {
-                formattedExpression.append(StringUtils.leftPad(minute, 2, '0'));
-                formattedExpression.append(",");
-            }
-            return formattedExpression.toString();
-        }
-        return StringUtils.leftPad(minutesExpression, 2, '0');
     }
 
 }

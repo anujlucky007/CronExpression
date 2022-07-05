@@ -28,7 +28,6 @@ class DayOfMonthDescriptionBuilderTest {
         assertEquals(actualMessage,expectedMessage);
     }
 
-
     @Test
     public void shouldGiveErrorIfDOMIsOutOfRange(){
 
