@@ -10,7 +10,7 @@ You will need at least Gradle and JDK 11 to build and run the script.
 
 From the project root, do `gradle clean build` :
 ```bash
-$ gralde clean build
+$ gradle clean build
 ..
 BUILD SUCCESSFUL in 2s
 ..
